@@ -1,0 +1,52 @@
+print("Welcome to Boltlightning780's calculator, reply with [+, -, x, /, ^, pi, hyp, rand_int] to pick which operation you want to use!" )
+
+opt = input("Pick an operation: ")
+import math
+import random
+
+if opt == "+" :
+    numb1 = float(input("Enter your First number:"))
+    numb2 = float(input("Enter your Second number:"))
+    ans1 = numb1 + numb2 
+    print("The sum of", {numb1}, "and", {numb2}, "is equal to:", ans1)
+elif opt == "-" :
+    numb1 = float(input("Enter your First number:"))
+    numb2 = float(input("Enter your Second number:"))
+    ans2 = numb1 - numb2 
+    print("The difference of", {numb1}, "and", {numb2}, "is equal to:", ans2)
+elif opt == "x" :
+    numb1 = float(input("Enter your First number:"))
+    numb2 = float(input("Enter your Second number:"))
+    ans3 = numb1 * numb2
+    print("The product of", {numb1}, "and", {numb2}, "is equal to:", ans3)
+elif opt == "/" :
+    numb1 = float(input("Enter your First number:"))
+    numb2 = float(input("Enter your Second number:"))
+    ans4 = numb1 / numb2 
+    print("The quotient of", {numb1}, "and", {numb2}, "is equal to:", ans4)
+elif opt == "^" :
+    numb1 = int(input("Enter your First number:"))
+    numb2 = int(input("Enter your Second number:"))
+    ans5 = numb1 ** numb2
+    print("The answer is:", ans5)
+elif opt == "pi" :
+    pi = 3.1415926
+    print("pi:", pi)
+elif opt == "hyp" :
+    numb1 = float(input("Enter side [a]:"))
+    numb2 = float(input("Enter side [b]:"))
+    stp1 = numb1**2 + numb2**2 
+    ans6 = math.sqrt(stp1)
+    print("Side [c] is:", ans6)
+elif opt == "rand_int" :
+    mins = int(input("Enter The Minimum Value: "))
+    maxs = int(input("Enter The Maximum Value: "))
+    numbs = int(input("Enter The Ammount Of Outputs: "))
+
+    lists = range(mins, maxs + 1)
+    num = set(lists)
+    print(random.sample(num, numbs))
+
+else :
+    print("Terminating Code...")
+print("Thank You For Using This Calculator! Show some Support over on our YT Channel Boltlightning780")
