@@ -1,52 +1,163 @@
-print("Welcome to Boltlightning780's calculator, reply with [+, -, x, /, ^, pi, hyp, rand_int] to pick which operation you want to use!" )
-
-opt = input("Pick an operation: ")
 import math
 import random
+import statistics
+import datetime
+import time
+import numpy
 
-if opt == "+" :
-    numb1 = float(input("Enter your First number:"))
-    numb2 = float(input("Enter your Second number:"))
-    ans1 = numb1 + numb2 
-    print("The sum of", {numb1}, "and", {numb2}, "is equal to:", ans1)
-elif opt == "-" :
-    numb1 = float(input("Enter your First number:"))
-    numb2 = float(input("Enter your Second number:"))
-    ans2 = numb1 - numb2 
-    print("The difference of", {numb1}, "and", {numb2}, "is equal to:", ans2)
-elif opt == "x" :
-    numb1 = float(input("Enter your First number:"))
-    numb2 = float(input("Enter your Second number:"))
-    ans3 = numb1 * numb2
-    print("The product of", {numb1}, "and", {numb2}, "is equal to:", ans3)
-elif opt == "/" :
-    numb1 = float(input("Enter your First number:"))
-    numb2 = float(input("Enter your Second number:"))
-    ans4 = numb1 / numb2 
-    print("The quotient of", {numb1}, "and", {numb2}, "is equal to:", ans4)
-elif opt == "^" :
-    numb1 = int(input("Enter your First number:"))
-    numb2 = int(input("Enter your Second number:"))
-    ans5 = numb1 ** numb2
-    print("The answer is:", ans5)
-elif opt == "pi" :
-    pi = 3.1415926
-    print("pi:", pi)
-elif opt == "hyp" :
-    numb1 = float(input("Enter side [a]:"))
-    numb2 = float(input("Enter side [b]:"))
-    stp1 = numb1**2 + numb2**2 
-    ans6 = math.sqrt(stp1)
-    print("Side [c] is:", ans6)
-elif opt == "rand_int" :
-    mins = int(input("Enter The Minimum Value: "))
-    maxs = int(input("Enter The Maximum Value: "))
-    numbs = int(input("Enter The Ammount Of Outputs: "))
+def clients():
+  curntTime = time.localtime()
+  time1 = time.strftime("%H:%M:%S", curntTime)
+  from datetime import date 
+  today = str(date.today())
+  names = ["Creator: Bolt.", "Title: Mult Func. Calc. Comp Sci. IA.", "Date:", today, "Time: ", time1]
+  combined = " | ".join(names)
+  print(combined)
+clients()
+owner = "Bolt"
+operations = ["addition: +", "subtraction: -", "multiplcation: x", "division /", "hypotenuse calc: hyp", "square root: sqr", "raise to a power: ^", "random number generator: rand-int", "Factorial: !", "Area of: area", "Sort an array: sort", "Mean: mean", "Median: median", "Mode: mode","Make-table: table"]
+print("Welcome to", owner, "Multi Function Calculator, we have a range of many types of operations you can do! Including:")
+for x in operations:
+  print(x)
+sel = input("Which operation would you like to do? Just reply with their respective signs")
+if sel == "+" :
+  print("You have selected addition")
+  inpts = int(input("How many terms would you like to add:"))
+  terms = []
 
-    lists = range(mins, maxs + 1)
-    num = set(lists)
-    print(random.sample(num, numbs))
+  for i in range(0, inpts):
+    print("Enter number at index: ", i,)
+    ter = float(input())
+    terms.append(ter)
+    print("The sum of the terms is: ", sum(terms))
+  quit()
+elif sel == "-" :
+  print("You have selected subtraction")
+  numb1 = float(input("Enter The First Term:"))
+  numb2 = float(input("Enter The Second Term:"))
+  diffs = numb1 - numb2
+  print("The difference of", numb1, "and", numb2, "is:", diffs)
+  quit()
+elif sel == "x" :
 
+    print("multiplcation:")
+    intpu = int(input("How many terms would you like to multiply: "))
+    mults = []
+
+    for i in range(0, intpu) :
+        print("Enter Number At Index:", i,)
+        prod = float(input())
+        mults.append(prod)
+        product = math.prod(mults)
+    print("The Product is:", product)
+
+    if product < 69 :
+      print("Product is less than 69")
+
+      if product > 25 :
+        print("But is larger than 25")
+    elif product == 69 :
+      print("Nice!")
+
+elif sel == "hyp" :
+  print("You have selected hypotenuse calc")
+  num1 = float(input("What is the first length? "))
+  num2 = float(input("What is the second length? "))
+  step1 = (num1 ** 2 + num2 ** 2)
+  hypo = math.sqrt(step1) 
+  print("The hypotenuse of", num1, "and", num2, "is equal to", hypo)
+  quit()
+elif sel == "/" :
+  print("You have selected division")
+  num1 = float(input("What is the first number? "))
+  num2 = float(input("What is the second number? "))
+  quotient = num1 / num2
+  print("The quotient of", num1, "and", num2, "is equal to", quotient)
+  quit()
+elif sel == "rand-int" :
+  low = int(input("Enter The Minimum Value:"))
+  high = int(input("Enter The Maximum Value:"))
+  outs = int(input("Enter The Number of Outputs:"))
+
+  list = range(low, high + 1)
+  num = set(list)
+  print(random.sample(num, outs))
+  quit()
+elif sel == "!" :
+  print("You have selected factorial")
+  num1 = int(input("What is the number? "))
+  fact = math.factorial(num1)
+  print("The factorial of", num1, "is equal to", fact)
+  quit()
+elif sel == "area" :
+  print("you have selected area")
+  len = float(input("What is the length? "))
+  wid = float(input("What is the width? "))
+  area = len * wid
+  print("the area of", len, "and", wid, "is equal to", area)
+  quit()
+elif sel == "sort" :
+  sortlst = []
+  nums = int(input("How many numbers do you want to sort? "))
+
+  for i in range(0, nums):
+    print("Enter number at index", i,)
+    item = int(input())
+    sortlst.append(item)
+  sortlst.sort()
+  print("The sorted array is:", sortlst)
+  quit()
+elif sel == "table":
+  print("You have selected make-table")
+  print("First we must build the table")
+  nx = int(input("Enter the First number for 'x'"))
+  nx2 = int(input("Enter the Second number for 'x'"))
+  ny = int(input("Enter the First number for 'y'"))
+  ny2 = int(input("Enter the Second number for 'y'"))
+
+  x = [nx, nx2]
+  y = [ny, ny2]
+
+  for a in x:
+    for b in y:
+      print(a, b)
+  quit()
+
+elif sel == "mean" :
+  print("You have selected mean")
+  lst = []
+  print("First we must build the table")
+  nums = int(input("How many numbers do you want to find the mean of? "))
+  for i in range(0, nums):
+    print("Enter number at index", i,)
+    item = int(input())
+    lst.append(item)
+  print("The mean or average is:", statistics.mean(lst))
+  quit()
+elif sel == "median" :
+  print("You have selected mean")
+  lst2 = []
+  print("First we must build the table")
+  nums1 = int(input("How many numbers do you want to find the median of? "))
+  for i in range(0, nums1):
+    print("Enter number at index", i,)
+    item = int(input())
+    lst2.append(item)
+    print("The median of the list is:", statistics.median(lst2))
+    quit()
+elif sel == "mode" :
+ print("You have selected mode")
+ lst3 = []
+ print("First we must build the table")
+ quit()
+nums3 = int(input("How many numbers do you want to find the mode of? "))
+for i in range(0, nums3):
+  print("Enter number at index", i,)
+  item = int(input())
+  lst3.append(item)
+  print("The mode of the list is:", statistics.mode(lst3))
+  quit()
 else :
-    print("Terminating Code...")
-print("Thank You For Using This Calculator! Show some Support over on our YT Channel Boltlightning780")
+  print("That is not a valid operation")
+  print("Terminating code...")
+  quit()
